@@ -1,0 +1,35 @@
+import discord
+from discord.ext import commands
+
+bot = commands.Bot(command_prefix='/', intents=discord.Intents.all())
+
+@bot.command('hi')
+async def hi(message):
+    await message.send('''
+                        Привет! Мы рады приветствовать теюя в нашем Додо боте!
+                       
+                       Здесь ты можешь быстро заказать пиццу /pizza, 
+                       а также безалкогольные напитки /drinks
+                        ''')
+
+@bot.command('pizza')
+async def pizza(message):
+    await message.send('''
+        Почему мы так хотим познакомиться?
+        Потому что дальше пицца делает всё сама.
+        Люди видят, что она вкусная, и возвращаются снова.
+        Нам главное первый раз это показать.
+        Вообще пицца — очень простая штука, её сложно испортить.
+        Достаточно хороших ингредиентов и правильного теста.
+        Это конструктор, если детали качественные, то и результат будет в порядке.
+                        ''')
+    await message.send('Пиццы:')
+    with open('images/img_8345.jpg', 'rb') as f:
+        picture = discord.File(f)
+
+    await message.send(file=picture)
+    await message.send('Пицца пепперони')
+    await message.send('Сырная пицца')
+    await message.send('Пицца маргарита')
+
+bot.run('TOKEN')
